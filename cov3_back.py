@@ -1,3 +1,34 @@
+def cad_user(usuarios):
+    cont = 1
+    print("\nQuantos usuários deseja cadastrar?")
+    qtde = int(input())
+    while cont <= qtde:
+        usuarios[cont] = {}
+
+        print("\nDigite o nome do usuário: ", cont)
+        username = input()
+        usuarios[cont]["Nome"] = username
+
+        print("\nDigite o código do usuário: ", cont)
+        usercode = int(input())
+        usuarios[cont]["Código"] = usercode
+
+        print("\nDigite a senha do usuário: ", cont)
+        password = int(input())
+        usuarios[cont]["Senha"] = password
+
+        print(f"\nDigite o nome do usuário {cont}? [A] Admin ou [G] Gestor")
+        usertype = input()
+        if usertype == "A":
+            usuarios[cont]["Perfil"] = "Admin"
+        if usertype == "G":
+            usuarios[cont]["Perfil"] = "Gestor"
+
+        cont = cont + 1
+
+#    print(usuarios)
+
+
 def imp_cid(cidadaos):
     arquivo = open("Base_Cidadaos_Aula45.txt", "r")
     for linha in arquivo:
@@ -65,6 +96,18 @@ def cad_sintomas(sintomas):
         sintomas[id_sint] = saud
         id_sint += 1
 
+
+def list_user(usuarios):
+    print("Entrou na lista de usuários...")
+    tam = len(usuarios)
+    if tam < 1:
+        print("\nNão há usuários cadastrados")
+    else:
+        for chave in usuarios:
+            print(f"\n{chave}:")
+            subdic = usuarios.get(chave)
+            for subchave in subdic:
+                print(f"{subchave} - {subdic.get(subchave)}")
 
 def list_cidadaos(cidadaos):
     tam = len(cidadaos)
